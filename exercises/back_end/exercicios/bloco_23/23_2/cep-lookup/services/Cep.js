@@ -1,16 +1,24 @@
 const Cep = require('../models/Cep');
 
-const findCep = async(cep) => {
-  const results = await Cep.findCep(cep);
-  return ({
-    cep: results.cep,
-    logradouro: results.logradouro,
-    bairro: results.bairro,
-    localidade: results.localidade,
-    uf: results.uf,
-  });
+const findCep = async(seachCep) => {
+  const results = await Cep.findCep(seachCep);
+  
+  return results
 };
+
+const create = async() => {
+  const newCep = Cep.create();
+  const { cep, logradouro, bairro, localidade, uf} = newCep
+  return ({
+    cep,
+    logradouro,
+    bairro,
+    localidade,
+    uf,
+  });
+}
 
 module.exports = {
   findCep,
+  create
 }
